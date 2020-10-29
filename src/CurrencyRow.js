@@ -1,20 +1,20 @@
-import React from 'react' 
+import React from 'react'
 
 export default function CurrencyRow(props) {
-  // destructure props into objects
+    // destructure props into objects
   const {
     currencyOptions,
     selectedCurrency,
     onChangeCurrency,
-    amount,
-    onChangeAmount
+    onChangeAmount,
+    amount
   } = props
   return (
     <div>
-      <input type="number" className="input" value={amount} onChange={onChangeAmount}/>
+      <input type="number" className="input" value={amount} onChange={onChangeAmount} />
       <select value={selectedCurrency} onChange={onChangeCurrency}>
-        {currencyOptions.map(prop => (
-        <option key={prop} value={prop}>{prop}</option>
+        {currencyOptions.map(option => (
+          <option key={option} value={option}>{option}</option>
         ))}
       </select>
     </div>

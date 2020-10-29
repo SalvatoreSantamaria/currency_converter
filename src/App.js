@@ -14,8 +14,8 @@ function App() {
   const [toCurrency, setToCurrency] = useState()
   const [exchageRate, setExchangeRate] = useState() //by default, no value
   console.log(exchageRate)
-  const [amount, setAmount] = useState(1) //default set to 1
-  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+  let [amount, setAmount] = useState(1) //default set to 1
+  let [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => { 
     fetch(BASE_URL)
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
       const firstCurrency = Object.keys(data.rates)[0] //get the first
       setCurrencyOptions([data.base, ...Object.keys(data.rates)])  //convert data into array of options. Get just the key portion of the rates. Destructure with the ...
@@ -49,12 +49,12 @@ function App() {
   }, [fromCurrency, toCurrency])
 
   function handleFromAmountChange(e) {
-    setAmount=(e.target.value)
+    setAmount(e.target.value)
     setAmountInFromCurrency = true
   }
 
   function handleToAmountChange(e) {
-    setAmount=(e.target.value)
+    setAmount(e.target.value)
     setAmountInFromCurrency = false
   }
 
