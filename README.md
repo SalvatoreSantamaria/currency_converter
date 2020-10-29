@@ -1,3 +1,12 @@
+# Tutorial link:
+
+https://www.youtube.com/watch?v=XN5elYWiSuw
+
+## Run this app:
+
+npm start and Ctrl + c to stop. Runs on localhost 3000
+
+# Default from generating App:
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

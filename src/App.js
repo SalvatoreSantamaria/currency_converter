@@ -7,10 +7,10 @@ const BASE_URL = 'https://api.exchangeratesapi.io/latest'
 function App() {
 
   
-  // returns array of options, first option is what state is ie currencyOptions() function, second option is value that allows us to set ie setCurrencyOptions() function
+  // returns array of options, first option is what state is ie currencyOptions() function, second option is value that allows us to set ie setCurrencyOptions() function, etc
   const [currencyOptions, setCurrencyOptions] = useState([]) //empty array is default
   //console.log(currencyOptions) all of the different currency options
-  const [fromCurrency, setFromCurrency] = useState()
+  const [fromCurrency, setFromCurrency] = useState() // 4. passing in e.target.value
   const [toCurrency, setToCurrency] = useState()
   const [exchageRate, setExchangeRate] = useState() //by default, no value
   console.log(exchageRate)
@@ -32,7 +32,7 @@ function App() {
     .then(data => {
       const firstCurrency = Object.keys(data.rates)[0] //get the first
       setCurrencyOptions([data.base, ...Object.keys(data.rates)])  //convert data into array of options. Get just the key portion of the rates. Destructure with the ...
-      setFromCurrency(data.base)
+      setFromCurrency(data.base) 
       setToCurrency(firstCurrency)
       setExchangeRate(data.rates[firstCurrency])
       console.log(data)
@@ -65,7 +65,7 @@ function App() {
     <CurrencyRow 
       currencyOptions={currencyOptions} //pass in currencyOptions as a prop
       selectedCurrency={fromCurrency}
-      onChangeCurrency={e => setFromCurrency(e.target.value)} //equal to a function
+      onChangeCurrency={e => setFromCurrency(e.target.value)} //3. set to equal to a function that gets the event from the select
       onChangeAmount={handleFromAmountChange} //set to variable
       amount={fromAmount}
     />
@@ -73,7 +73,7 @@ function App() {
     <CurrencyRow 
       currencyOptions={currencyOptions} //pass in currencyOptions as a prop
       selectedCurrency={toCurrency}
-      onChangeCurrency={e => setToCurrency(e.target.value)} //equal to a function
+      onChangeCurrency={e => setToCurrency(e.target.value)} 
       onChangeAmount={handleToAmountChange}
       amount={toAmount}
     />
